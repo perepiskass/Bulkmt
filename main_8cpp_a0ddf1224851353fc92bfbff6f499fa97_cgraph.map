@@ -1,0 +1,9 @@
+<map id="main" name="main">
+<area shape="rect" id="node2" href="$main_8cpp.html#a3493000b630e07d7f151c60e99a79e30" title="Функция для проверки введенных аргументов программы. " alt="" coords="142,56,223,83"/>
+<area shape="rect" id="node6" href="$classLogger.html#afbe890cea4f5034d431905a8578f9f22" title="Logger::getInstance" alt="" coords="108,107,257,133"/>
+<area shape="rect" id="node7" href="$classLogger.html#a9b550579a2a6a49815f9c0774312886a" title="Logger::init" alt="" coords="136,157,229,184"/>
+<area shape="rect" id="node8" href="$main_8cpp.html#a8ac1b55875097418e7cbea70f36eef99" title="signalFunction" alt="" coords="127,208,239,235"/>
+<area shape="rect" id="node3" href="$version__lib_8h.html#a611014f17df7beb38556969d507c35a8" title="version_major" alt="" coords="305,5,417,32"/>
+<area shape="rect" id="node4" href="$version__lib_8h.html#ad4af1896cb52e820ec682991f84fe4fe" title="version_minor" alt="" coords="305,56,417,83"/>
+<area shape="rect" id="node5" href="$version__lib_8h.html#a3bbf8a2e2598558e5e6ff1dfb1345db8" title="version_patch" alt="" coords="306,107,417,133"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="DataIn::setData" name="DataIn::setData">
+<area shape="rect" id="node2" href="$classLogger.html#afbe890cea4f5034d431905a8578f9f22" title="Logger::getInstance" alt="" coords="436,28,585,54"/>
+<area shape="rect" id="node3" href="$classLogger.html#abb45d37f23271b1f248c1a1a5034d4c3" title="Logger::set_lineCount" alt="" coords="197,28,359,54"/>
+<area shape="rect" id="node4" href="$classLogger.html#af34db4a35951429397c276ae329dc047" title="Logger::set_commandCount" alt="" coords="176,78,380,105"/>
+<area shape="rect" id="node5" href="$classDataIn.html#af5592e857ff62172a96fdbca751bf6e2" title="DataIn::notify" alt="" coords="225,129,331,156"/>
+<area shape="rect" id="node6" href="$classLogger.html#a50a58b00042143ea2ae5c0272bf1faf4" title="Logger::set_bulkCount" alt="" coords="428,129,593,156"/>
+</map>

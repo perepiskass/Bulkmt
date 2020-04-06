@@ -1,0 +1,5 @@
+<map id="Logger::set_commandCount" name="Logger::set_commandCount">
+<area shape="rect" id="node2" href="$classDataIn.html#a46b7d0105f3e97597e0512a7e0f91056" title="DataIn::setData" alt="" coords="281,5,404,32"/>
+<area shape="rect" id="node3" href="$classDataToConsole.html#a26571f943af9caf4961cf8ed8bbe72be" title="DataToConsole::update" alt="" coords="257,56,428,83"/>
+<area shape="rect" id="node4" href="$classDataToFile.html#a18fe2a1b9d2e996281f8e8b1764ec74c" title="DataToFile::update" alt="" coords="273,107,412,133"/>
+</map>

@@ -1,0 +1,6 @@
+<map id="Logger::set_bulkCount" name="Logger::set_bulkCount">
+<area shape="rect" id="node2" href="$classDataIn.html#af5592e857ff62172a96fdbca751bf6e2" title="DataIn::notify" alt="" coords="251,5,357,32"/>
+<area shape="rect" id="node4" href="$classDataToConsole.html#a26571f943af9caf4961cf8ed8bbe72be" title="DataToConsole::update" alt="" coords="219,56,389,83"/>
+<area shape="rect" id="node5" href="$classDataToFile.html#a18fe2a1b9d2e996281f8e8b1764ec74c" title="DataToFile::update" alt="" coords="235,107,373,133"/>
+<area shape="rect" id="node3" href="$classDataIn.html#a46b7d0105f3e97597e0512a7e0f91056" title="DataIn::setData" alt="" coords="437,5,560,32"/>
+</map>

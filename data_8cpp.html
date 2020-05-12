@@ -84,21 +84,90 @@ var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
 </div>
 </div><!-- top -->
 <div class="header">
+  <div class="summary">
+<a href="#var-members">Переменные</a>  </div>
   <div class="headertitle">
 <div class="title">Файл data.cpp</div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &quot;<a class="el" href="data_8h_source.html">data.h</a>&quot;</code><br />
+<code>#include &lt;algorithm&gt;</code><br />
+<code>#include &lt;atomic&gt;</code><br />
+<code>#include &lt;ctime&gt;</code><br />
+<code>#include &lt;chrono&gt;</code><br />
+<code>#include &lt;fstream&gt;</code><br />
+<code>#include &lt;mutex&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Граф включаемых заголовочных файлов для data.cpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="data_8cpp__incl.png" border="0" usemap="#source_2data_8cpp" alt=""/></div>
 <map name="source_2data_8cpp" id="source_2data_8cpp">
-<area shape="rect" id="node2" href="data_8h.html" title="data.h" alt="" coords="515,80,577,107"/>
-<area shape="rect" id="node13" href="logger_8h.html" title="logger.h" alt="" coords="845,155,919,181"/>
+<area shape="rect" id="node2" href="data_8h.html" title="data.h" alt="" coords="176,80,239,107"/>
+<area shape="rect" id="node7" href="logger_8h.html" title="logger.h" alt="" coords="424,155,497,181"/>
 </map>
 </div>
-</div></div><!-- contents -->
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Переменные</h2></td></tr>
+<tr class="memitem:a0afa02d14fff34c480aabfbc41ad193c"><td class="memItemLeft" align="right" valign="top">std::condition_variable&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="data_8cpp.html#a0afa02d14fff34c480aabfbc41ad193c">cv</a></td></tr>
+<tr class="separator:a0afa02d14fff34c480aabfbc41ad193c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afa014d7b46145b18dd910345c6f020dc"><td class="memItemLeft" align="right" valign="top">std::mutex&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="data_8cpp.html#afa014d7b46145b18dd910345c6f020dc">mtx_cmd</a></td></tr>
+<tr class="separator:afa014d7b46145b18dd910345c6f020dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f54be14703396cbea3dade759d83159"><td class="memItemLeft" align="right" valign="top">std::mutex&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="data_8cpp.html#a4f54be14703396cbea3dade759d83159">mtx_file</a></td></tr>
+<tr class="separator:a4f54be14703396cbea3dade759d83159"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e9f3f10db2c9c77a29cdea6c1b54583"><td class="memItemLeft" align="right" valign="top">std::atomic&lt; bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="data_8cpp.html#a7e9f3f10db2c9c77a29cdea6c1b54583">cmd_run</a></td></tr>
+<tr class="separator:a7e9f3f10db2c9c77a29cdea6c1b54583"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Переменные</h2>
+<a class="anchor" id="a7e9f3f10db2c9c77a29cdea6c1b54583"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::atomic&lt;bool&gt; cmd_run</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a0afa02d14fff34c480aabfbc41ad193c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::condition_variable cv</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="afa014d7b46145b18dd910345c6f020dc"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::mutex mtx_cmd</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a4f54be14703396cbea3dade759d83159"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::mutex mtx_file</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+</div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Создано системой &#160;<a href="http://www.doxygen.org/index.html">

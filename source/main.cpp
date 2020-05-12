@@ -1,11 +1,9 @@
 #include "version_lib.h"
-#include <iostream>
 #include "data.h"
 
-std::condition_variable cv;
-std::mutex mtx_cmd;
-std::mutex mtx_file;
-bool cmd_run;
+#include <csignal>
+#include <thread>
+
 std::shared_ptr<DataIn> bulkPtr;
 
 size_t checkArg(int, char**);
@@ -32,12 +30,12 @@ int main(int argc, char *argv[])
     std::shared_ptr<DataToConsole> console{new DataToConsole(bulkPtr)};
     std::shared_ptr<DataToFile> file{new DataToFile(bulkPtr)};
 
+    constexpr size_t count_thread = 4;    ///< общее колличество потоков в программе.
+    Logger::getInstance().init(count_thread);
+
     std::thread log([console](){console->update(1);});
     std::thread file1([file](){file->update(2);});
     std::thread file2([file](){file->update(3);});
-
-    constexpr size_t count_thread = 4;    ///< общее колличество потоков в программе.
-    Logger::getInstance().init(count_thread);
 
     log.detach();
     file1.detach();

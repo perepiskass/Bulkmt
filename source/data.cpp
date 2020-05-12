@@ -1,11 +1,20 @@
 #include "data.h"
 
+#include <algorithm>
+#include <atomic>
+#include <ctime>
+#include <chrono>
+#include <fstream>
+#include <mutex>
 
+std::condition_variable cv;
+std::mutex mtx_cmd;
+std::mutex mtx_file;
+std::atomic<bool> cmd_run;
 
 //-----Data input methods----------------------------------------------------------------------
     DataIn::DataIn(int count):count(count),countTry(count)
     {}
-
 
     void DataIn::checkDilimiter(std::string& str)
     {
@@ -18,7 +27,6 @@
                 checkD.first = true;
                 ++checkD.second;
             }
-            
         }
         else if (str == "}")
         {
@@ -64,19 +72,14 @@
                 notify();
             }
         }
-        
     }
 
     void DataIn::notify() 
     {
         Logger::getInstance().set_bulkCount();
-
         setQueue();
-
         cmd_run = true;
-
         cv.notify_all();
-
         clearData();
     }
 
@@ -118,20 +121,20 @@
             std::unique_lock<std::mutex> consolLock(mtx_cmd);
             while(!cmd_run) cv.wait(consolLock);
 
-                auto bulk = _data->getBulk();
-                cmd_run = false;
-                consolLock.unlock();
+            auto bulk = _data->getBulk();
+            cmd_run = false;
+            consolLock.unlock();
 
-                Logger::getInstance().set_bulkCount(id);
+            Logger::getInstance().set_bulkCount(id);
 
-                std::cout << "bulk: ";
-                for(auto str = bulk.first.begin(); str!=bulk.first.end(); ++str)
-                {
-                    Logger::getInstance().set_commandCount(id);
-                    if(str==bulk.first.begin()) std::cout << *str;
-                    else std::cout << ", " << *str;
-                }
-                std::cout << std::endl;
+            std::cout << "bulk: ";
+            for(auto str = bulk.first.begin(); str!=bulk.first.end(); ++str)
+            {
+                Logger::getInstance().set_commandCount(id);
+                if(str==bulk.first.begin()) std::cout << *str;
+                else std::cout << ", " << *str;
+            }
+            std::cout << std::endl;
         }
     }
 
@@ -145,38 +148,38 @@
     {
         while (true)
         {
-                std::unique_lock<std::mutex> fileLock(mtx_file);
-                cv.wait(fileLock,[&](){return !_data->bulkQ.empty();});
+            std::unique_lock<std::mutex> fileLock(mtx_file);
+            cv.wait(fileLock,[&](){return !_data->bulkQ.empty();});
 
-                    auto start(std::chrono::steady_clock::now());
-    
-                    auto bulk = _data->bulkQ.front();
-                    _data->bulkQ.pop();
-                    fileLock.unlock();  
+            auto start(std::chrono::steady_clock::now());
 
-                    Logger::getInstance().set_bulkCount(id);
+            auto bulk = _data->bulkQ.front();
+            _data->bulkQ.pop();
+            fileLock.unlock();  
 
-                    std::ofstream out;
-                    auto timeUNIX = bulk.second.count();
-                    auto end(std::chrono::steady_clock::now());
-                        // using seconds = std::chrono::duration<double>;
-                        // using nanoseconds = std::chrono::duration<double, std::ratio_multiply<seconds::period,std::nano>>;
-                    using nanoseconds = std::chrono::duration<double,std::ratio<1,1'000'000'000>>;
-                    auto diff = nanoseconds(end - start).count();
-                    std::string path = "bulk"+ std::to_string(timeUNIX) + '.' + std::to_string(int(diff)) + ".log";
-                    out.open(path);
-                    if (out.is_open(),std::ios::app)
-                    {
-                        out << "bulk: ";    //<< id << ' ';
-                        for(auto str = bulk.first.begin(); str!=bulk.first.end(); ++str)
-                        {
-                            Logger::getInstance().set_commandCount(id);
+            Logger::getInstance().set_bulkCount(id);
 
-                            if(str==bulk.first.begin()) out << *str;
-                            else out << ", " << *str;
-                        }
-                    }
-                    out.close();
+            std::ofstream out;
+            auto timeUNIX = bulk.second.count();
+            auto end(std::chrono::steady_clock::now());
+                // using seconds = std::chrono::duration<double>;
+                // using nanoseconds = std::chrono::duration<double, std::ratio_multiply<seconds::period,std::nano>>;
+            using nanoseconds = std::chrono::duration<double,std::ratio<1,1'000'000'000>>;
+            auto diff = nanoseconds(end - start).count();
+            std::string path = "bulk"+ std::to_string(timeUNIX) + '.' + std::to_string(int(diff)) + ".log";
+            out.open(path);
+            if (out.is_open(),std::ios::app)
+            {
+                out << "bulk: ";    //<< id << ' ';
+                for(auto str = bulk.first.begin(); str!=bulk.first.end(); ++str)
+                {
+                    Logger::getInstance().set_commandCount(id);
+
+                    if(str==bulk.first.begin()) out << *str;
+                    else out << ", " << *str;
+                }
+            }
+            out.close();
             
         }
     }

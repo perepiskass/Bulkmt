@@ -1,29 +1,12 @@
-#include <iostream>
+#pragma once
 #include <vector>
 #include <string>
-#include <ctime>
-#include <chrono>
-#include <fstream>
-#include <csignal>
-#include <algorithm>
 #include <queue>
-#include <typeinfo>
-#include "logger.h"
-
-
-#include <thread>
-#include <mutex>
 #include <condition_variable>
-
+#include "logger.h"
 
 using Time = std::chrono::seconds;
 using Bulk = std::pair<std::vector<std::string>,Time>;
-
-extern std::condition_variable cv;
-extern std::mutex mtx_cmd;
-extern std::mutex mtx_file;
-extern bool cmd_run;
-
 
 class DataIn
 {
@@ -49,7 +32,7 @@ private:
 class DataToConsole
 {
     private:
-    std::shared_ptr<DataIn> _data;
+        std::shared_ptr<DataIn> _data;
     
     public:
         DataToConsole(std::shared_ptr<DataIn> data);
@@ -59,7 +42,7 @@ class DataToConsole
 class DataToFile
 {
     private:
-    std::shared_ptr<DataIn> _data;
+        std::shared_ptr<DataIn> _data;
 
     public:
         DataToFile(std::shared_ptr<DataIn> data);
